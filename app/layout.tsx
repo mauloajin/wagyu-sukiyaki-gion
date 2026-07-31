@@ -4,6 +4,7 @@ import "./globals.css";
 const siteUrl = "https://wagyu-sukiyaki-gion.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  verification: { google: "ayHXvvh7MAYyEd0yabm5xYrI98qeN_1bfcLkvUPkbrM" },
   title: "WAGYU SUKIYAKI GION｜和牛すき焼き 祇園｜京都・木屋町",
   description: "京都・木屋町のWAGYU SUKIYAKI GION｜和牛すき焼き 祇園。京都河原町駅徒歩1分、祇園四条駅徒歩3分。火〜土11:45〜14:15・17:00〜22:00。鴨川を望むルーフトップでもお食事を楽しめます。",
   alternates: { canonical: "/" },
