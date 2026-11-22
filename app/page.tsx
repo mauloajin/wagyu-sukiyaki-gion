@@ -1,48 +1,49 @@
-const NAME = "WAGYU SUKIYAKI GION｜和牛すき焼き 祇園";
-const ADDRESS = "〒600-8012 京都府京都市下京区斎藤町123 RAKUAS木屋町 4F";
-const MAP = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(NAME + " " + ADDRESS);
-const INSTAGRAM = "https://www.instagram.com/kiyamachi_wagyu_bar";
-const BAR = "https://bar-craft-club-kamogawa.vercel.app/";
-
+const NAME = "Wagyu Sukiyaki 祇園";
+const ADDRESS = "京都府京都市下京区斎藤町123 RAKUAS木屋町 4F";
+const URL = "https://wagyu-sukiyaki-gion.vercel.app/";
+const PHONE = "075-365-8038";
+const MAP = "https://www.google.com/maps?cid=11301025218455970970";
+const OFFICIAL = "https://wafrenchandbar-lehublot.owst.jp/";
+const BOOK = "https://www.hotpepper.jp/strJ004444032/yoyaku/hpds/?ROUTE_KBN=20";
+const TABLELOG = "https://tabelog.com/kyoto/A2601/A260201/26045502/";
+const INSTAGRAM = "https://www.instagram.com/kiyamachi_wagyu_bar/";
 const faqs = [
-  ["WAGYU SUKIYAKI GION｜和牛すき焼き 祇園はどこにありますか？", `${ADDRESS}です。木屋町通にあるRAKUAS木屋町の4階です。`],
-  ["最寄り駅から何分ですか？", "阪急「京都河原町駅」から徒歩1分、京阪「祇園四条駅」から徒歩3分です。"],
-  ["営業時間は何時ですか？", "火曜日〜土曜日の11:45〜14:15、17:00〜22:00です。"],
-  ["定休日はいつですか？", "日曜日と月曜日が定休日です。"],
-  ["どのような料理を楽しめますか？", "和牛すき焼きをお楽しみいただけます。"],
-  ["食事の後に利用できるバーはありますか？", "同じ4階に姉妹店「BAR CRAFT倶楽部 KAMOGAWA」がございます。すき焼きの後も、ゆったりとバータイムをお過ごしいただけます。"],
-  ["ルーフトップで食事はできますか？", "5階の屋上ルーフトップで、鴨川や京都の街並みを眺めながらお食事をお楽しみいただけます。"],
-  ["Where is WAGYU SUKIYAKI GION located?", "It is on the 4th floor of RAKUAS Kiyamachi, one minute on foot from Kyoto-kawaramachi Station and three minutes from Gion-shijo Station."],
-  ["What are the opening hours?", "The restaurant is open Tuesday through Saturday, 11:45 am–2:15 pm and 5:00 pm–10:00 pm. It is closed on Sunday and Monday."]
+  ["営業時間と定休日は？", "火曜日〜日曜日の11:30〜14:30、17:00〜22:00に営業しています。定休日は月曜日です。"],
+  ["どこにありますか？", `${ADDRESS}です。京都河原町駅2B出口から徒歩約3分、祇園四条駅3番出口から徒歩約5分です。`],
+  ["予約方法を教えてください。", `ホットペッパーグルメ・食べログのネット予約、またはお電話（${PHONE}）で承ります。`],
+  ["すき焼きセットの料金は？", "A5ランク和牛すき焼きセットは100g 5,800円、150g 6,800円、200g 7,800円、250g 8,800円、300g 9,800円です。税込・サービス料10％別。最新の提供内容は予約ページでご確認ください。"],
+  ["個室はありますか？", "個室はありません。テーブル席とカウンター席をご用意しています。貸切についてはお電話でお問い合わせください。"],
+  ["テラスで食事はできますか？", "テラス席ではお食事をご利用いただけません。食後のひとときにご利用ください。利用条件は店舗へお問い合わせください。"],
+  ["英語メニューはありますか？", "英語メニューをご用意しています。"],
+  ["子どもと一緒に利用できますか？", "お子様連れでご利用いただけます。お席やベビーカーでの来店については、ご予約時にご相談ください。"],
+  ["What are the opening hours?", "Open Tuesday–Sunday, 11:30 am–2:30 pm and 5:00 pm–10:00 pm. Closed on Mondays."],
+  ["How can I book a table?", "Book online through Hot Pepper Gourmet or Tabelog, or call +81-75-365-8038. English menus are available. Meals are served indoors; dining is not available on the terrace."]
 ];
-
-const jpPlaces = ["京都","木屋町","河原町","京都河原町","祇園四条","四条河原町","鴨川","先斗町近く","四条大橋近く","斎藤町","下京区","京都市","RAKUAS木屋町"];
-const jpTerms = ["和牛すき焼き","すき焼き","和牛料理","日本料理","和牛レストラン","すき焼き店","昼の食事","夜の食事","レストラン","食事処","駅近グルメ","鴨川沿いグルメ","ルーフトップで食事","屋上で食事","営業時間","定休日"];
-const enPlaces = ["Kyoto","Kiyamachi","Kawaramachi","Kyoto Kawaramachi","Gion Shijo","Shijo Kawaramachi","Kamo River","near Pontocho","near Shijo Bridge","Saitocho","Shimogyo Ward","downtown Kyoto","RAKUAS Kiyamachi"];
-const enTerms = ["wagyu sukiyaki","sukiyaki restaurant","wagyu restaurant","Japanese restaurant","Japanese beef dining","local dining","restaurant near station","restaurant opening hours","restaurant directions","daytime dining","evening dining","rooftop dining","Kamo River view dining","Kyoto city view dining","restaurant location","Japanese hot pot restaurant"];
-const jp = jpPlaces.flatMap(place => jpTerms.map(term => `${place} ${term}`));
-const en = enPlaces.flatMap(place => enTerms.map(term => `${term} ${place}`));
-
-const days = ["Tuesday","Wednesday","Thursday","Friday","Saturday"];
-const jsonLd = {
-  "@context":"https://schema.org","@type":"Restaurant",name:NAME,alternateName:["WAGYU SUKIYAKI GION","和牛すき焼き 祇園"],url:"https://wagyu-sukiyaki-gion.vercel.app/",description:"京都・木屋町で和牛すき焼きを楽しめるレストラン。鴨川や京都の街並みを望む5階の屋上ルーフトップでも食事を楽しめます。",address:{"@type":"PostalAddress",postalCode:"600-8012",addressRegion:"京都府",addressLocality:"京都市下京区",streetAddress:"斎藤町123 RAKUAS木屋町 4F",addressCountry:"JP"},servesCuisine:["和牛すき焼き","Sukiyaki","Japanese cuisine"],hasMap:MAP,sameAs:[INSTAGRAM],openingHoursSpecification:days.flatMap(day=>[
-    {"@type":"OpeningHoursSpecification",dayOfWeek:`https://schema.org/${day}`,opens:"11:45",closes:"14:15"},
-    {"@type":"OpeningHoursSpecification",dayOfWeek:`https://schema.org/${day}`,opens:"17:00",closes:"22:00"}
-  ])
-};
-const faqLd = {"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqs.map(([q,a])=>({"@type":"Question",name:q,acceptedAnswer:{"@type":"Answer",text:a}}))};
-
+const jpPlaces=["京都","木屋町","河原町","京都河原町","祇園四条","四条河原町","鴨川周辺","先斗町周辺","四条大橋周辺","斎藤町","下京区","京都市","京都府"];
+const jpTerms=["和牛すき焼き","すき焼き店","A5和牛","和牛料理","日本料理","レストラン","ランチ","ディナー","ネット予約","電話予約","営業時間","定休日","アクセス","英語メニュー","テーブル席","カウンター席"];
+const enPlaces=["Kyoto","Kiyamachi","Kawaramachi","Kyoto Kawaramachi","Gion Shijo","Shijo Kawaramachi","near the Kamo River","near Pontocho","near Shijo Bridge","Saitocho","Shimogyo Ward","central Kyoto","Kyoto Prefecture"];
+const enTerms=["wagyu sukiyaki","sukiyaki restaurant","A5 wagyu","Japanese beef dining","Japanese restaurant","restaurant reservations","lunch","dinner","online booking","telephone reservations","opening hours","closing day","restaurant directions","English menu","table seating","counter seating"];
+const days=["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const restaurant={"@context":"https://schema.org","@type":"Restaurant",name:NAME,alternateName:["WAGYU SUKIYAKI GION","和牛すき焼き 祇園"],url:URL,telephone:"+81-75-365-8038",description:"京都・木屋町の和牛すき焼き店。A5ランク和牛のセットとトリュフたまごかけご飯。火〜日11:30〜14:30・17:00〜22:00、月曜定休。",image:URL+"images/sukiyaki.jpg",address:{"@type":"PostalAddress",addressRegion:"京都府",addressLocality:"京都市下京区",streetAddress:"斎藤町123 RAKUAS木屋町 4F",addressCountry:"JP"},servesCuisine:["すき焼き","日本料理"],hasMap:MAP,acceptsReservations:BOOK,hasMenu:OFFICIAL+"foods",sameAs:[OFFICIAL,TABLELOG,INSTAGRAM],openingHoursSpecification:days.flatMap(day=>[{"@type":"OpeningHoursSpecification",dayOfWeek:`https://schema.org/${day}`,opens:"11:30",closes:"14:30"},{"@type":"OpeningHoursSpecification",dayOfWeek:`https://schema.org/${day}`,opens:"17:00",closes:"22:00"}])};
+const faqData={"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqs.map(([q,a])=>({"@type":"Question",name:q,acceptedAnswer:{"@type":"Answer",text:a}}))};
+function Actions(){return <div className="actions"><a className="button primary" href={BOOK}>空席確認・オンライン予約</a><a className="button" href="tel:0753658038">電話 {PHONE}</a></div>}
+function Heading({label,children}:{label:string;children:React.ReactNode}){return <div className="section-heading"><p className="eyebrow">{label}</p><h2>{children}</h2></div>}
 export default function Home(){return <>
-  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(jsonLd)}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqLd)}}/>
-  <header><a className="brand" href="#top">WAGYU <span>SUKIYAKI</span> GION</a><nav><a href="#story">特徴</a><a href="#menu">料理</a><a href="#info">店舗情報</a><a href="#access">アクセス</a><a href="#faq">FAQ</a><a href="#english">English</a></nav></header>
-  <main id="top"><section className="hero"><div className="heroInner"><p className="eyebrow">KIYAMACHI · KYOTO</p><h1>WAGYU<br/><em>SUKIYAKI</em><br/>GION</h1><p className="jaName">和牛すき焼き 祇園</p><p className="lead">京都・木屋町で味わう、和牛すき焼き。</p><div className="actions"><a className="primary" href={MAP}>Google Maps</a><a href={INSTAGRAM}>Instagram</a></div></div><div className="crest" aria-hidden="true">祇<br/>園</div></section>
-  <section id="story" className="split"><div><p className="kicker">WAGYU &amp; KYOTO</p><h2>鴨川のほとりで、<br/>すき焼きを。</h2></div><div><p>WAGYU SUKIYAKI GION｜和牛すき焼き 祇園は、京都・木屋町で和牛すき焼きを楽しめるレストランです。</p><p>阪急「京都河原町駅」から徒歩1分、京阪「祇園四条駅」から徒歩3分。木屋町通、鴨川や先斗町にも近いRAKUAS木屋町の4階で、昼と夜に営業しています。</p></div></section>
-  <section id="menu" className="feature"><div><p className="kicker">THE TABLE</p><h2>和牛すき焼きと、<br/>京都の眺め。</h2><p>和牛すき焼きを中心に、お食事の時間をお楽しみください。5階の屋上ルーフトップでは、鴨川や京都の街並みを眺めながらお食事をお楽しみいただけます。</p></div></section>
-  <section id="info"><p className="kicker">INFORMATION</p><h2>店舗情報</h2><dl><div><dt>正式店名</dt><dd>{NAME}</dd></div><div><dt>英語・ローマ字表記</dt><dd>WAGYU SUKIYAKI GION</dd></div><div><dt>業態・料理</dt><dd>和牛すき焼きレストラン</dd></div><div><dt>住所</dt><dd>{ADDRESS}</dd></div><div><dt>営業時間</dt><dd>火曜日〜土曜日<br/>11:45〜14:15<br/>17:00〜22:00</dd></div><div><dt>定休日</dt><dd>日曜日・月曜日</dd></div><div><dt>Instagram</dt><dd><a href={INSTAGRAM}>@kiyamachi_wagyu_bar</a></dd></div></dl></section>
-  <section id="access" className="access"><p className="kicker">ACCESS</p><h2>河原町と祇園を結ぶ、<br/>木屋町へ。</h2><p>{ADDRESS}</p><ul><li>阪急「京都河原町駅」から徒歩1分</li><li>京阪「祇園四条駅」から徒歩3分</li></ul><a className="primary" href={MAP}>Googleマップで開く</a></section>
-  <section className="sister"><p className="kicker">AFTER DINNER</p><h2>お食事から、<br/>食後のバータイムまで。</h2><p>同じ4階には、姉妹店の「BAR CRAFT倶楽部 KAMOGAWA」がございます。すき焼きを楽しんだ後の一杯はもちろん、お食事後もゆったりとお過ごしいただけます。</p><p><a href={BAR}>BAR CRAFT倶楽部 KAMOGAWAを見る →</a></p></section>
-  <section id="faq"><p className="kicker">FAQ</p><h2>よくあるご質問</h2><div className="faqs">{faqs.map(([q,a])=><details key={q}><summary>{q}</summary><p>{a}</p></details>)}</div></section>
-  <section id="english" className="english"><p className="kicker">ENGLISH GUIDE</p><h2>WAGYU SUKIYAKI GION</h2><p>WAGYU SUKIYAKI GION is a wagyu sukiyaki restaurant in Kiyamachi, central Kyoto. The restaurant is close to the Kamo River, one minute on foot from Kyoto-kawaramachi Station and three minutes from Gion-shijo Station. Guests can also dine on the fifth-floor rooftop overlooking the Kamo River and the Kyoto cityscape.</p><dl><div><dt>Store name</dt><dd>WAGYU SUKIYAKI GION｜和牛すき焼き 祇園</dd></div><div><dt>Cuisine</dt><dd>Wagyu sukiyaki / Japanese cuisine</dd></div><div><dt>Address</dt><dd>RAKUAS Kiyamachi 4F, 123 Saitocho, Shimogyo Ward, Kyoto 600-8012, Japan</dd></div><div><dt>Access</dt><dd>1 minute on foot from Hankyu Kyoto-kawaramachi Station; 3 minutes from Keihan Gion-shijo Station</dd></div><div><dt>Hours</dt><dd>Tuesday–Saturday, 11:45 am–2:15 pm and 5:00 pm–10:00 pm</dd></div><div><dt>Closed</dt><dd>Sunday and Monday</dd></div><div><dt>Links</dt><dd><a href={MAP}>Google Maps</a> · <a href={INSTAGRAM}>Instagram</a></dd></div></dl></section>
-  <section className="keywords"><details><summary>関連する検索語 / Related searches</summary><div><h3>日本語</h3><p>{jp.join("・")}</p><h3>English</h3><p>{en.join(" · ")}</p></div></details></section></main>
-  <footer><div className="brand">WAGYU <span>SUKIYAKI</span> GION</div><p>{NAME}</p><p>{ADDRESS}</p><p>火曜日〜土曜日 11:45〜14:15／17:00〜22:00<br/>日曜日・月曜日 定休</p><div className="footerLinks"><a href={MAP}>Google Maps</a><a href={INSTAGRAM}>Instagram</a></div></footer>
-  </>}
+  <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(restaurant)}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqData)}}/>
+  <a className="skip-link" href="#main">本文へ移動</a>
+  <header className="header"><a className="brand" href="#top"><span>Wagyu Sukiyaki <b>祇園</b></span><small>KIYAMACHI · KYOTO</small></a><nav aria-label="メインナビゲーション"><a href="#cuisine">料理</a><a href="#course">セット</a><a href="#space">店内</a><a href="#access">アクセス</a><a href="#english" lang="en">English</a><a className="nav-book" href={BOOK}>ご予約</a></nav></header>
+  <main id="main">
+    <section className="hero" id="top"><img className="hero-photo" src="/images/wagyu.jpg" width="640" height="359" alt="京都・木屋町 Wagyu Sukiyaki 祇園のA5ランク和牛" fetchPriority="high"/><div className="hero-shade"/><div className="hero-content"><p className="eyebrow">京都・木屋町　和牛すき焼き</p><h1><span>Wagyu Sukiyaki</span><strong>祇園</strong></h1><p className="hero-copy">和牛を味わい、<br/>京都のひとときを。</p><p className="hero-description">A5ランク和牛のすき焼きと、トリュフの香り。<br/>木屋町の一席で、昼も夜も。</p><Actions/><div className="hero-info"><span>火〜日 11:30–14:30 / 17:00–22:00</span><span>月曜定休</span><span>京都河原町駅 徒歩約3分</span></div></div></section>
+    <section className="intro section"><Heading label="01 · WAGYU & KYOTO">一鍋を囲む、<br/>木屋町の時間。</Heading><div className="prose"><p>{NAME}は、京都・木屋町のRAKUAS木屋町4階にあるすき焼き店です。A5ランクの和牛と野菜を味わうセットを中心に、お食事をご用意しています。</p><p>和牛の量は100gから300gまで。食事の締めくくりには、トリュフの香るたまごかけご飯を。京都河原町や祇園四条から歩いて訪ねられる場所で、それぞれのペースでお過ごしください。</p><p className="english-note" lang="en">Wagyu sukiyaki in the heart of Kyoto. A table in Kiyamachi, a shared pot, and time to enjoy it.</p></div></section>
+    <section id="cuisine" className="section cuisine"><Heading label="02 · CUISINE">和牛から、<br/>余韻のひと口まで。</Heading><div className="food-grid"><article><img src="/images/sukiyaki.jpg" width="640" height="572" loading="lazy" alt="Wagyu Sukiyaki 祇園の和牛・野菜・卵を揃えたすき焼きセット"/><p className="eyebrow">WAGYU SUKIYAKI</p><h3>A5ランク和牛すき焼き</h3><p>和牛と野菜を一鍋に。セットには先付け、ご飯、味噌汁、卵などが付き、ご飯・味噌汁・卵はおかわりいただけます。</p></article><article><img src="/images/truffle.jpg" width="640" height="359" loading="lazy" alt="Wagyu Sukiyaki 祇園のたまごかけご飯にトリュフを削る様子"/><p className="eyebrow">TRUFFLE & RICE</p><h3>トリュフたまごかけご飯</h3><p>すき焼きの後には、卵とご飯にトリュフの香りを重ねて。最後のひと口まで楽しむ、セットの締めくくりです。</p><div className="drink-note"><h3>料理とともに、一杯。</h3><p>京都産のジン、日本酒、ワイン、ジャパニーズウイスキー。お飲み物は店舗メニューからお選びください。</p><a className="text-link" href={OFFICIAL+"drinks"}>ドリンクメニューを見る</a></div></article></div></section>
+    <section id="course" className="section dark"><div className="intro"><Heading label="03 · SUKIYAKI SET">お好みの量で、<br/>和牛を楽しむ。</Heading><div><p>A5ランク和牛すき焼きセット</p><p lang="en" className="muted">A5 Wagyu Sukiyaki Set</p><dl className="price-list">{[[100,"5,800"],[150,"6,800"],[200,"7,800"],[250,"8,800"],[300,"9,800"]].map(([g,p])=><div key={g}><dt>和牛 {g}g</dt><dd>¥{p}</dd></div>)}</dl><p className="note">お一人様・税込／サービス料10％別。<br/>セットの内容・料金・予約条件は、予約ページでご確認ください。</p><p className="note" lang="en">Per person, tax included. A 10% service charge applies.</p><Actions/></div></div></section>
+    <section id="space" className="section"><Heading label="04 · SPACE">食事は店内で。<br/>食後は、京都の眺めと。</Heading><div className="space-grid"><figure><img src="/images/interior.jpg" width="640" height="359" loading="lazy" alt="京都・木屋町 Wagyu Sukiyaki 祇園のテーブル席"/><figcaption><h3>テーブルとカウンター</h3><p>落ち着いた照明の店内で、すき焼きを。個室はありません。貸切をご希望の場合は、お電話でご相談ください。</p></figcaption></figure><figure><img src="/images/terrace.jpg" width="640" height="359" loading="lazy" alt="Wagyu Sukiyaki 祇園の鴨川と京都の街並みを望むテラス"/><figcaption><h3>鴨川を望むテラス</h3><p>京都の街並みと鴨川を眺める、食後のひととき。<strong>テラス席でのお食事はできません。</strong>利用条件は店舗へお問い合わせください。</p></figcaption></figure></div></section>
+    <section id="reservation" className="section reservation"><Heading label="05 · RESERVATION">ご来店の前に。</Heading><div className="reservation-grid"><div><h3>お席のご予約</h3><p>ネット予約で日時と人数を選択いただくか、お電話でご相談ください。お子様連れや貸切のご相談も承ります。</p><Actions/></div><div className="visit-notes"><div><h3>英語メニュー</h3><p>英語メニューをご用意しています。<span lang="en"> English menus available.</span></p></div><div><h3>ご利用条件</h3><p>食事は店内のお席でご利用ください。アレルギーなどのご相談は、ご予約時に店舗へお伝えください。</p></div></div></div></section>
+    <section id="info" className="section"><Heading label="06 · INFORMATION">店舗情報。</Heading><dl className="information"><div><dt>店名</dt><dd>{NAME}</dd></div><div><dt>住所</dt><dd>{ADDRESS}</dd></div><div><dt>電話</dt><dd><a href="tel:0753658038">{PHONE}</a></dd></div><div><dt>営業時間</dt><dd>火曜日〜日曜日<br/><strong>11:30〜14:30 / 17:00〜22:00</strong></dd></div><div><dt>定休日</dt><dd>月曜日</dd></div><div><dt>お席</dt><dd>テーブル・カウンター／個室なし／貸切は要相談</dd></div><div><dt>お支払い</dt><dd>VISA・Mastercard・JCB・American Express</dd></div><div><dt>駐車場</dt><dd>専用駐車場なし</dd></div><div><dt>言語</dt><dd>英語メニューあり</dd></div></dl></section>
+    <section id="access" className="section access"><Heading label="07 · ACCESS">河原町から、<br/>木屋町へ。</Heading><div className="access-grid"><div><p>{ADDRESS}</p><p>阪急京都線「京都河原町駅」2B出口から徒歩約3分。<br/>京阪本線「祇園四条駅」3番出口から徒歩約5分。</p><p>RAKUAS木屋町の4階へお越しください。</p><a className="button primary" href={MAP}>Google マップで道順を見る</a></div><div className="access-sign" aria-hidden="true"><span>KYOTO KAWARAMACHI</span><i>木屋町</i><span>RAKUAS KIYAMACHI · 4F</span></div></div></section>
+    <section id="english" className="section dark" lang="en"><Heading label="08 · ENGLISH GUIDE">Wagyu Sukiyaki Gion.</Heading><div className="english-grid"><div><p>A wagyu sukiyaki restaurant in Kiyamachi, central Kyoto. Choose an A5 wagyu set with 100–300g of beef, vegetables and accompaniments, followed by truffle egg rice.</p><p>Table and counter seating are available indoors. Enjoy the view from the terrace after your meal; dining is not available on the terrace. There are no private rooms. English menus are available.</p><a className="button primary" href={BOOK}>Check availability & book</a></div><dl><div><dt>Address</dt><dd>RAKUAS Kiyamachi 4F, 123 Saitocho, Shimogyo-ku, Kyoto, Japan</dd></div><div><dt>Hours</dt><dd>Tuesday–Sunday<br/>11:30 am–2:30 pm / 5:00 pm–10:00 pm<br/>Closed on Mondays</dd></div><div><dt>Access</dt><dd>About 3 minutes from Kyoto-kawaramachi Station, Exit 2B; 5 minutes from Gion-shijo Station, Exit 3.</dd></div><div><dt>Telephone</dt><dd><a href="tel:+81753658038">+81-75-365-8038</a></dd></div><div><dt>Set menu</dt><dd>¥5,800–¥9,800 per person, tax included. A 10% service charge applies.</dd></div></dl></div></section>
+    <section id="faq" className="section"><Heading label="09 · FAQ">よくあるご質問。</Heading><div className="faqs">{faqs.map(([q,a],i)=><details key={q} open={i===0}><summary>{q}</summary><p>{a}</p></details>)}</div></section>
+    <section className="section links"><Heading label="10 · LINKS">ご予約・店舗案内。</Heading><div className="link-grid">{[[OFFICIAL,"公式サイト"],[BOOK,"ホットペッパーで予約"],[TABLELOG,"食べログ"],[INSTAGRAM,"Instagram"],[MAP,"Google マップ"]].map(([href,label])=><a href={href} key={href}>{label}<span aria-hidden="true">↗</span></a>)}</div><details className="keywords"><summary>関連する検索語 / Related searches</summary><h3>日本語</h3><p>{jpPlaces.flatMap(p=>jpTerms.map(t=>p+" "+t)).join("・")}</p><h3 lang="en">English</h3><p lang="en">{enPlaces.flatMap(p=>enTerms.map(t=>t+" "+p)).join(" · ")}</p></details></section>
+    <section className="closing"><img src="/images/interior.jpg" width="640" height="359" loading="lazy" alt="Wagyu Sukiyaki 祇園の食事を楽しむ店内"/><div><p className="eyebrow">A TABLE IN KYOTO</p><h2>京都の一日を、<br/>和牛とともに。</h2><Actions/></div></section>
+  </main><footer><div><a className="brand" href="#top">{NAME}</a><p>{ADDRESS}<br/><a href="tel:0753658038">{PHONE}</a></p></div><div><p>火〜日 11:30〜14:30 / 17:00〜22:00<br/>月曜定休</p><p className="note">営業時間・メニュー・利用条件は変更となる場合があります。<br/>ご予約時に最新情報をご確認ください。</p><small>© {NAME}</small></div></footer>
+</>}
